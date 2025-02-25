@@ -1,8 +1,323 @@
+basePath: /
 definitions:
+  models.Cart:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/models.CartItem'
+        type: array
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.CartItem:
+    properties:
+      cart_id:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+      price:
+        type: number
+      product_id:
+        type: integer
+      quantity:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Chat:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      trainer_id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.Club:
+    properties:
+      address:
+        type: string
+      coordinates:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
   models.ErrorResponse:
     properties:
       error:
         description: Error message
+        type: string
+    type: object
+  models.MyTraining:
+    properties:
+      address:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      num_places:
+        type: integer
+      status:
+        type: string
+      trainer_id:
+        type: integer
+      training_date:
+        type: string
+      training_time:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.News:
+    properties:
+      address:
+        type: string
+      category:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      news_date:
+        type: string
+      notify_users:
+        type: boolean
+      published_at:
+        type: string
+      start_time:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      vos_jdut:
+        type: string
+    type: object
+  models.Notification:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      is_read:
+        type: boolean
+      message:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.Order:
+    properties:
+      id:
+        type: integer
+      order_date:
+        type: string
+      payment_method:
+        type: string
+      payment_status:
+        type: string
+      status:
+        type: string
+      total_amount:
+        type: number
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+      what_paid_for:
+        type: string
+    type: object
+  models.Payment:
+    properties:
+      amount:
+        type: number
+      id:
+        type: integer
+      order_id:
+        type: integer
+      payment_date:
+        type: string
+      payment_method:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.Product:
+    properties:
+      brand:
+        type: string
+      category:
+        type: string
+      color:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+      size:
+        type: string
+      stock:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.PromoCode:
+    properties:
+      active:
+        type: boolean
+      code:
+        type: string
+      description:
+        type: string
+      discount_percentage:
+        type: number
+      end_date:
+        type: string
+      id:
+        type: integer
+      start_date:
+        type: string
+      times_used:
+        type: integer
+      usage_limit:
+        type: integer
+    type: object
+  models.Promotion:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      discount:
+        type: number
+      end_date:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      notify_users:
+        type: boolean
+      start_date:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Trainer:
+    properties:
+      about:
+        type: string
+      age:
+        type: integer
+      country:
+        type: string
+      created_at:
+        type: string
+      full_name:
+        type: string
+      height:
+        type: number
+      id:
+        type: integer
+      image_url:
+        type: string
+      trainer_type:
+        type: string
+      updated_at:
+        type: string
+      weight:
+        type: number
+    type: object
+  models.TrainingGroup:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      trainer_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.TrainingRegistration:
+    properties:
+      id:
+        type: integer
+      registration_date:
+        type: string
+      status:
+        type: string
+      training_session_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  models.TrainingSession:
+    properties:
+      created_at:
+        type: string
+      end_time:
+        type: string
+      id:
+        type: integer
+      latitude:
+        type: number
+      location:
+        type: string
+      longitude:
+        type: number
+      num_places:
+        type: integer
+      start_time:
+        type: string
+      trainer_id:
+        type: integer
+      training_date:
+        type: string
+      training_type:
+        type: string
+      updated_at:
         type: string
     type: object
   models.User:
@@ -28,9 +343,1125 @@ definitions:
       wallet_balance:
         type: number
     type: object
+host: 25.28.121.106:8080
 info:
   contact: {}
+  description: API для Basketball Academy
+  title: Basketball Academy API
+  version: "1.0"
 paths:
+  /{resource}:
+    get:
+      consumes:
+      - application/json
+      description: Получить все записи модели
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items: {}
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить список записей
+      tags:
+      - generic
+    post:
+      consumes:
+      - application/json
+      description: Создать новую запись модели
+      parameters:
+      - description: Данные записи
+        in: body
+        name: data
+        required: true
+        schema: {}
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema: {}
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Создать новую запись
+      tags:
+      - generic
+  /{resource}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Удалить запись модели по ID
+      parameters:
+      - description: ID записи
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Удалить запись
+      tags:
+      - generic
+    get:
+      consumes:
+      - application/json
+      description: Получить запись модели по идентификатору
+      parameters:
+      - description: ID записи
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema: {}
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить запись по ID
+      tags:
+      - generic
+    put:
+      consumes:
+      - application/json
+      description: Обновить существующую запись по ID
+      parameters:
+      - description: ID записи
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Данные для обновления
+        in: body
+        name: data
+        required: true
+        schema: {}
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema: {}
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Обновить запись
+      tags:
+      - generic
+  /api/Chat:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all Chat
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Chat'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all Chat
+      tags:
+      - Chat
+    post:
+      consumes:
+      - application/json
+      description: Create a new Chat with the given information
+      parameters:
+      - description: Chat data
+        in: body
+        name: Chat
+        required: true
+        schema:
+          $ref: '#/definitions/models.Chat'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Chat'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new Chat
+      tags:
+      - Chat
+  /api/News:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all News
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.News'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all News
+      tags:
+      - News
+    post:
+      consumes:
+      - application/json
+      description: Create a new News with the given information
+      parameters:
+      - description: News data
+        in: body
+        name: News
+        required: true
+        schema:
+          $ref: '#/definitions/models.News'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.News'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new News
+      tags:
+      - News
+  /api/News/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a News by ID
+      parameters:
+      - description: News ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Delete News
+      tags:
+      - News
+    put:
+      consumes:
+      - application/json
+      description: Update News data by ID
+      parameters:
+      - description: News ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated News data
+        in: body
+        name: News
+        required: true
+        schema:
+          $ref: '#/definitions/models.News'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.News'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update News
+      tags:
+      - News
+  /api/Products:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all Products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Product'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all Products
+      tags:
+      - Products
+    post:
+      consumes:
+      - application/json
+      description: Create a new Product with the given information
+      parameters:
+      - description: Product data
+        in: body
+        name: Product
+        required: true
+        schema:
+          $ref: '#/definitions/models.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Product'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new Product
+      tags:
+      - Products
+  /api/Products/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Product by ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Delete Product
+      tags:
+      - Products
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a Product by their ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Product'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get Product by ID
+      tags:
+      - Products
+    put:
+      consumes:
+      - application/json
+      description: Update Product data by ID
+      parameters:
+      - description: Product ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Product data
+        in: body
+        name: Product
+        required: true
+        schema:
+          $ref: '#/definitions/models.Product'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Product'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update Product
+      tags:
+      - Products
+  /api/PromoCodes:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all PromoCodes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PromoCode'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all PromoCodes
+      tags:
+      - PromoCodes
+    post:
+      consumes:
+      - application/json
+      description: Create a new PromoCode with the given information
+      parameters:
+      - description: PromoCode data
+        in: body
+        name: PromoCode
+        required: true
+        schema:
+          $ref: '#/definitions/models.PromoCode'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.PromoCode'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new PromoCode
+      tags:
+      - PromoCodes
+  /api/Promotions:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all Promotions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Promotion'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all Promotions
+      tags:
+      - Promotions
+    post:
+      consumes:
+      - application/json
+      description: Create a new Promotion with the given information
+      parameters:
+      - description: Promotion data
+        in: body
+        name: Promotion
+        required: true
+        schema:
+          $ref: '#/definitions/models.Promotion'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Promotion'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new Promotion
+      tags:
+      - Promotions
+  /api/Promotions/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Promotion by ID
+      parameters:
+      - description: Promotion ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Delete Promotion
+      tags:
+      - Promotions
+    put:
+      consumes:
+      - application/json
+      description: Update Promotion data by ID
+      parameters:
+      - description: Promotion ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Promotion data
+        in: body
+        name: Promotion
+        required: true
+        schema:
+          $ref: '#/definitions/models.Promotion'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Promotion'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update Promotion
+      tags:
+      - Promotions
+  /api/TrainingGroup:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all TrainingGroup
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.TrainingGroup'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all TrainingGroup
+      tags:
+      - TrainingGroup
+    post:
+      consumes:
+      - application/json
+      description: Create a new TrainingGroup with the given information
+      parameters:
+      - description: TrainingGroup data
+        in: body
+        name: TrainingGroup
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrainingGroup'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TrainingGroup'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new TrainingGroup
+      tags:
+      - TrainingGroup
+  /api/cart-items:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Данные товара в корзине
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.CartItem'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CartItem'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Добавить товар в корзину
+      tags:
+      - Cart
+  /api/carts/checkout:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID корзины
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.Cart'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Оформить заказ из корзины
+      tags:
+      - Cart
+  /api/carts/user/{userId}:
+    get:
+      parameters:
+      - description: ID пользователя
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Cart'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить корзину пользователя по ID
+      tags:
+      - Cart
+  /api/clubs:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Club'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить все клубы
+      tags:
+      - Clubs
+  /api/clubs/{id}:
+    get:
+      parameters:
+      - description: ID клуба
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Club'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить клуб по ID
+      tags:
+      - Clubs
+  /api/my-trainings/{id}/cancel:
+    post:
+      parameters:
+      - description: ID записи в MyTraining
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.MyTraining'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Отменить запись на тренировку (в таблице MyTraining)
+      tags:
+      - Trainings
+  /api/notifications:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Данные уведомления
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.Notification'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Notification'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Отправить уведомление
+      tags:
+      - Notifications
+  /api/orders:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all orders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Order'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get all orders
+      tags:
+      - orders
+    post:
+      consumes:
+      - application/json
+      description: Create a new Order with the given information
+      parameters:
+      - description: Order data
+        in: body
+        name: Order
+        required: true
+        schema:
+          $ref: '#/definitions/models.Order'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Order'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Create a new Order
+      tags:
+      - orders
+  /api/payments/{id}:
+    get:
+      parameters:
+      - description: ID платежа
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Payment'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить детали платежа по ID
+      tags:
+      - Payments
+  /api/payments/user/{userId}:
+    get:
+      parameters:
+      - description: ID пользователя
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Payment'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить историю платежей пользователя
+      tags:
+      - Payments
+  /api/trainers:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Trainer'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить всех тренеров
+      tags:
+      - Trainers
+  /api/trainers/{id}:
+    get:
+      parameters:
+      - description: ID тренера
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Trainer'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить тренера по ID
+      tags:
+      - Trainers
+  /api/training-registrations:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Данные регистрации на тренировку
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrainingRegistration'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TrainingRegistration'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Записаться на тренировку
+      tags:
+      - Trainings
+  /api/training-sessions:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.TrainingSession'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить расписание тренировок
+      tags:
+      - Trainings
+  /api/training-sessions/{id}:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID тренировки
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Новые данные тренировки
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrainingSession'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TrainingSession'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Обновить данные тренировки (только для тренера)
+      tags:
+      - Trainers
+  /api/training-sessions/{sessionId}/participants:
+    get:
+      parameters:
+      - description: ID тренировки
+        in: path
+        name: sessionId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.TrainingRegistration'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Получить участников тренировки по ID сессии
+      tags:
+      - Trainings
   /api/users:
     get:
       consumes:
@@ -79,6 +1510,91 @@ paths:
           schema:
             $ref: '#/definitions/models.ErrorResponse'
       summary: Create a new user
+      tags:
+      - users
+  /api/users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Delete user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a user by their ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get user by ID
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Update user data by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Update user
       tags:
       - users
 swagger: "2.0"

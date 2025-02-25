@@ -4,17 +4,14 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-
-	// Импортируем сгенерированную документацию Swagger
 	_ "Basketball_academy/docs"
 
-	// Импортируем Swagger UI middleware
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 
 	"Basketball_academy/models"
 	"Basketball_academy/routes"
@@ -26,12 +23,11 @@ import (
 // @host localhost:8080
 // @BasePath /
 func main() {
-	// Загружаем переменные окружения из .env
+
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Ошибка загрузки .env файла")
 	}
 
-	// Формируем строку подключения (DSN)
 	dsn := "host=" + os.Getenv("DB_HOST") +
 		" user=" + os.Getenv("DB_USER") +
 		" password=" + os.Getenv("DB_PASSWORD") +
@@ -39,15 +35,14 @@ func main() {
 		" port=" + os.Getenv("DB_PORT") +
 		" sslmode=disable TimeZone=UTC"
 
-	// Подключаемся к БД
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Ошибка подключения к базе данных: ", err)
 	}
 
-	// Автоматическая миграция для всех моделей
 	err = db.AutoMigrate(
 		&models.User{},
+		&models.Trainer{},
 		&models.News{},
 		&models.Promotion{},
 		&models.TrainingSession{},
@@ -63,7 +58,10 @@ func main() {
 		&models.SupportTicket{},
 		&models.AcademyStaff{},
 		&models.TrainingGroup{},
-		&models.StaticPage{},
+		&models.MyTraining{},
+		&models.Cart{},
+		&models.CartItem{},
+		&models.Club{},
 	)
 	if err != nil {
 		log.Fatal("Ошибка миграции: ", err)
@@ -72,13 +70,11 @@ func main() {
 	// Инициализируем Gin
 	router := gin.Default()
 
-	// Регистрируем маршруты вашего API
 	routes.SetupRoutes(router, db)
 
-	// Регистрируем маршрут для Swagger UI
 	// Swagger будет доступен по адресу: http://localhost:8080/swagger/index.html
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Запускаем сервер на порту 8080
-	router.Run(":8080")
+	router.Run("localhost:8080")
 }
