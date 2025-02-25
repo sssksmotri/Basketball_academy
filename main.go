@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"time"
 
 	_ "Basketball_academy/docs"
 
@@ -16,6 +17,17 @@ import (
 	"Basketball_academy/models"
 	"Basketball_academy/routes"
 )
+
+// LoggerMiddleware является middleware для логирования запросов API.
+// Обычно эту функцию можно вынести в отдельный файл (например, middleware/logger.go),
+// чтобы централизованно управлять логированием запросов во всём приложении.
+func LoggerMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		c.Next()
+		log.Printf("%s %s %d %s", c.Request.Method, c.Request.URL, c.Writer.Status(), time.Since(start))
+	}
+}
 
 // @title Basketball Academy API
 // @version 1.0
@@ -69,6 +81,9 @@ func main() {
 
 	// Инициализируем Gin
 	router := gin.Default()
+
+	// Применяем middleware для логирования запросов
+	router.Use(LoggerMiddleware())
 
 	routes.SetupRoutes(router, db)
 
