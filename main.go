@@ -62,9 +62,9 @@ func main() {
 
 	routes.SetupRoutes(router, db)
 
-	// Swagger будет доступен по адресу: http://localhost:8080/swagger/index.html
+	// Swagger будет доступен по адресу: http://sssksmotri-basketball-academy-1655.twc1.net:80/swagger/index.html
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// Запускаем сервер на порту 8080
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:80")
 }
