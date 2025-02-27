@@ -1,26 +1,18 @@
 package main
 
 import (
-	"log"
-	"os"
-	"time"
-
+	"Basketball_academy/database"
 	_ "Basketball_academy/docs"
-
-	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-
 	"Basketball_academy/models"
 	"Basketball_academy/routes"
+	"log"
+	"time"
+
+	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// LoggerMiddleware является middleware для логирования запросов API.
-// Обычно эту функцию можно вынести в отдельный файл (например, middleware/logger.go),
-// чтобы централизованно управлять логированием запросов во всём приложении.
 func LoggerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()
@@ -29,30 +21,13 @@ func LoggerMiddleware() gin.HandlerFunc {
 	}
 }
 
-// @title Basketball Academy API
-// @version 1.0
-// @description API для Basketball Academy
-// @host localhost:8080
-// @BasePath /
 func main() {
+	log.Println("Запуск приложения...")
 
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Ошибка загрузки .env файла")
-	}
+	// Подключаемся к базе данных
+	db := database.ConnectDB()
 
-	dsn := "host=" + os.Getenv("DB_HOST") +
-		" user=" + os.Getenv("DB_USER") +
-		" password=" + os.Getenv("DB_PASSWORD") +
-		" dbname=" + os.Getenv("DB_NAME") +
-		" port=" + os.Getenv("DB_PORT") +
-		" sslmode=disable TimeZone=UTC"
-
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Ошибка подключения к базе данных: ", err)
-	}
-
-	err = db.AutoMigrate(
+	err := db.AutoMigrate(
 		&models.User{},
 		&models.Trainer{},
 		&models.News{},

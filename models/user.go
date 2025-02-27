@@ -8,7 +8,7 @@ type User struct {
 	FirstName     string    `gorm:"size:100" json:"first_name"`
 	LastName      string    `gorm:"size:100" json:"last_name"`
 	Email         string    `gorm:"size:255;unique" json:"email"`
-	Phone         string    `gorm:"size:20;uniqueIndex" json:"phone"`
+	Phone         string    `gorm:"size:20;unique" json:"phone"`
 	PasswordHash  string    `gorm:"size:255" json:"password_hash"`
 	Role          string    `gorm:"size:20" json:"role"`
 	WalletBalance float64   `gorm:"type:decimal(10,2);default:0" json:"wallet_balance"`

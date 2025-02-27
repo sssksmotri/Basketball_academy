@@ -343,7 +343,7 @@ definitions:
       wallet_balance:
         type: number
     type: object
-host: 25.28.121.106:8080
+host: localhost:8080
 info:
   contact: {}
   description: API для Basketball Academy
@@ -545,6 +545,39 @@ paths:
       summary: Create a new Chat
       tags:
       - Chat
+  /api/MyTrainings:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Данные уведомления
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/models.MyTraining'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.MyTraining'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Отправить уведомление
+      tags:
+      - MyTrainings
   /api/News:
     get:
       consumes:
