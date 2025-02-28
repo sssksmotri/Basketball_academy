@@ -1,4 +1,3 @@
-basePath: /
 definitions:
   models.Cart:
     properties:
@@ -343,12 +342,8 @@ definitions:
       wallet_balance:
         type: number
     type: object
-host: localhost:8080
 info:
   contact: {}
-  description: API для Basketball Academy
-  title: Basketball Academy API
-  version: "1.0"
 paths:
   /{resource}:
     get:
